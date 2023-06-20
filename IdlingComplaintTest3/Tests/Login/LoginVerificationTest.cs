@@ -62,12 +62,18 @@ internal class LoginVerificationTest : LoginModel
     public void ExplicitWaitInvalidLogin()
     {
         //locate login field
+        //EmailInput = "ttseng@dep.nyc.gov";
+        //PasswordInput = "Testing1";
+        //ClickLoginButton();
+        //
+        //var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10)); //1 - too short
+        //wait.Until(d => d.FindElement(By.CssSelector("button[routerlink = 'idlingcomplaint/new']")));
+        //locate login field
         EmailInput = "ttseng@dep.nyc.gov";
         PasswordInput = "Testing1";
         ClickLoginButton();
-
         var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10)); //1 - too short
-        wait.Until(d => d.FindElement(By.CssSelector("button[routerlink = 'idlingcomplaint/new']")));
+        wait.Until(d => d.FindElement(By.TagName("simple-snack-bar")));
     }
 
     //Email/Password does not match
@@ -76,14 +82,25 @@ internal class LoginVerificationTest : LoginModel
     public void ImplicitWaitInvalidLogin()
     {
         //locate login field
+        //EmailInput = "ttseng@dep.nyc.gov";
+        //PasswordInput = "Testing1";
+        //ClickLoginButton();
+        //
+        //Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+        //var newComplaintButton = Driver.FindElement(By.CssSelector("button[routerlink = 'idlingcomplaint/new']"));
+        //Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+        //Assert.IsNull(newComplaintButton);
+
+        //locate login field
         EmailInput = "ttseng@dep.nyc.gov";
         PasswordInput = "Testing1";
         ClickLoginButton();
-        
         Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-        var newComplaintButton = Driver.FindElement(By.CssSelector("button[routerlink = 'idlingcomplaint/new']"));
+        var invalidLoginButton = Driver.FindElement(By.TagName("simple-snack-bar")); //text is in span
         Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-        Assert.IsNull(newComplaintButton);
+        Assert.IsNotNull(invalidLoginButton);
+        Assert.That(invalidLoginButton.Text.Trim(), Is.EqualTo("Email and password do not match."));
+        //Assert.That(invalidLoginButton.Text.Trim(), Is.EqualTo("Email and password do not match.\r\nx"));
     }
 
 }

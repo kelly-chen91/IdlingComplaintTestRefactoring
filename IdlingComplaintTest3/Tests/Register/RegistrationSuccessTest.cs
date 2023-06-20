@@ -74,7 +74,7 @@ namespace IdlingComplaintTest.Tests.Register
             ZipCodeInput = "11373";
             PhoneInput = "631-632-9800";
             ScrollToButton();
-            ClickSubmitButton();
+            ClickCancelButton();
 
             var loginButton = Driver.FindElement(By.XPath("/html/body/app-root/div/app-login/mat-card/mat-card-content/form/div[3]/button"));
             Assert.IsNotNull(loginButton);

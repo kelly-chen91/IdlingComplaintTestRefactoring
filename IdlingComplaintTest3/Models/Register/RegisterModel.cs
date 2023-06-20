@@ -13,9 +13,7 @@ namespace IdlingComplaintTest.Pages.Register
     internal class RegisterModel : BaseModel
     {
         
-        public RegisterModel()
-        {
-        }
+        public RegisterModel() { }
 
         public void OneTimeSetUp()
         {
@@ -184,14 +182,14 @@ namespace IdlingComplaintTest.Pages.Register
 
         public void SelectSecurityQuestion(int questionIndex) 
         {
-         SecurityQuestionControl.Click();
-         var security = Driver.FindElement(By.Id("mat-select-1-panel"));
-         var optionElementList = security.FindElements(By.TagName("span"));
-         Thread.Sleep(1000);
-         List<string> questionList = ConvertOptionToText(optionElementList);
-         if (questionIndex >= questionList.Count || questionIndex < 0) return;
-         optionElementList[questionIndex].Click();
-         UpdateOption(questionList[questionIndex], true);
+            SecurityQuestionControl.Click();
+            var security = Driver.FindElement(By.Id("mat-select-1-panel"));
+            var optionElementList = security.FindElements(By.TagName("span"));
+            Thread.Sleep(1000);
+            List<string> questionList = ConvertOptionToText(optionElementList);
+            if (questionIndex >= questionList.Count || questionIndex < 0) return;
+            optionElementList[questionIndex].Click();
+            UpdateOption(questionList[questionIndex], true);
         }
 
 

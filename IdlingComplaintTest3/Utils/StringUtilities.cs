@@ -19,7 +19,8 @@ namespace IdlingComplaintTest.Utils
             }
             return str;
         }
-
+        
+        /*Generates a random email with a varied length*/
         public static string GenerateRandomEmail()
         {
             var random = new Random();
@@ -27,10 +28,11 @@ namespace IdlingComplaintTest.Utils
             return GenerateRandomString(length) + "@dep.nyc.gov";
         }
 
+        /*Generates a random email with a specified length*/
         public static string GenerateRandomEmail(int length)
         {
             if (length <= 12)
-                length = 12;
+                length = 12; //GenerateRandomEmail(1) => a@dep.nyc.gov
 
             return GenerateRandomString(length - 12) + "@dep.nyc.gov";
         }

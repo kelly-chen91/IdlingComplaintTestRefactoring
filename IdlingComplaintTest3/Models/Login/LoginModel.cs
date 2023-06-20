@@ -7,9 +7,7 @@ namespace IdlingComplaintTest.Pages.Login
 {
     internal class LoginModel : BaseModel
     {
-        public LoginModel()
-        {
-        }
+        public LoginModel() { }
 
         public void OneTimeSetUp()
         {
